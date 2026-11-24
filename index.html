@@ -4,14 +4,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CHARIA DZ</title>
+<title>LUXORA ULTRA PRO</title>
 <style>
 :root{
- --purple:#1900ff;--pink:#9e020254;--blue:#000000;
- --orange:#c0f306;--cyan:#52b4b43a;--yellow:#f30000;
- --dark:#19152b;--muted:#292553;--white:#ff0303;
- --gradient:linear-gradient(120deg,#7928ca,#4b2135,#6e063a);
- --shadow:0 15px 45px #2600ff;
+ --purple:#7928ca;--pink:#ff3d9a;--blue:#3987ff;
+ --orange:#ff8a24;--cyan:#00c9c8;--yellow:#ffd447;
+ --dark:#19152b;--muted:#77758b;--white:#fff;
+ --gradient:linear-gradient(120deg,#7928ca,#ff3d9a,#ff8a24);
+ --shadow:0 15px 45px #5b37a01c;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -23,7 +23,7 @@ button,input,select{font:inherit}
 button{cursor:pointer;border:0}
 a{text-decoration:none;color:inherit}
 .topbar{
- background:linear-gradient(90deg,#6224bd,#ff0000a1,#ff8a24);
+ background:linear-gradient(90deg,#6224bd,#e735a2,#ff8a24);
  color:white;text-align:center;padding:10px;font-size:13px;
 }
 header{
@@ -61,7 +61,7 @@ select{
  display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center;
 }
 .hero-content{
- background:linear-gradient(135deg,#6425bc,#a52dd5 50%,#68040493);
+ background:linear-gradient(135deg,#6425bc,#a52dd5 50%,#fa398f);
  color:white;border-radius:32px;padding:55px 42px;
  position:relative;overflow:hidden;box-shadow:0 25px 60px #8b36c34a;
 }
@@ -239,9 +239,9 @@ footer a:hover{color:#ff70bd}
 
 <header>
  <nav class="nav">
-  <a class="logo" href="#">CHERIA DZ</a>
+  <a class="logo" href="#">LUXORA.</a>
   <div class="navlinks">
-   <a href="#home" data-t="home">الصفحة الرئيسية</a>
+   <a href="#home" data-t="home">الرئيسية</a>
    <a href="#categories" data-t="categories">التصنيفات</a>
    <a href="#products" data-t="products">المنتجات</a>
    <a href="#contact" data-t="contact">اتصل بنا</a>
@@ -276,7 +276,7 @@ footer a:hover{color:#ff70bd}
 </section>
 
 <section class="section" id="categories">
- <div class="section-head"><div><h2 id="catTitle">تسوق حسب ذوقك👌</h2><p id="catSub">اكتشف مجموعاتنا المتنوعة</p></div></div>
+ <div class="section-head"><div><h2 id="catTitle">تسوق حسب التصنيف</h2><p id="catSub">اكتشف مجموعاتنا المتنوعة</p></div></div>
  <div class="categories">
   <div class="category" onclick="filterCategory('fashion')"><div class="emoji">👗</div><h3 id="catFashion">الأزياء</h3></div>
   <div class="category" onclick="filterCategory('tech')"><div class="emoji">🎧</div><h3 id="catTech">الإلكترونيات</h3></div>
@@ -305,7 +305,7 @@ footer a:hover{color:#ff70bd}
 
 <section class="promo">
  <h2 id="promoTitle">عالم جديد من الأناقة ينتظرك!</h2>
- <p id="promoText">استخدم رمز CHERIA DZ10 للحصول على خصم تجريبي 10%</p>
+ <p id="promoText">استخدم رمز LUXORA10 للحصول على خصم تجريبي 10%</p>
  <a href="#products" class="btn white" id="promoBtn">اكتشف العروض</a>
 </section>
 
@@ -323,11 +323,11 @@ footer a:hover{color:#ff70bd}
 
 <footer>
  <div class="footer-inner">
-  <div><div class="logo" style="color:white">CHERIA DZ</div><p id="footerDesc">وجهتك المثالية لاكتشاف المنتجات العصرية والأنيقة.</p></div>
+  <div><div class="logo" style="color:white">LUXORA.</div><p id="footerDesc">وجهتك المثالية لاكتشاف المنتجات العصرية والأنيقة.</p></div>
   <div><h3 id="quickTitle">روابط سريعة</h3><a href="#home" id="footHome">الرئيسية</a><a href="#products" id="footProducts">المنتجات</a><a href="#categories" id="footCategories">التصنيفات</a></div>
-  <div><h3 id="adminTitle">الإدارة</h3><a href="#" onclick="openAdmin(event)" id="adminLink">لوحة إدارة المتجر</a><a href="#contact" id="footContact"> اتصل بنا</a><a href="#contact" id="footContact">https://www.instagram.com/_ouss._.ama._.saadi/</a></div>
+  <div><h3 id="adminTitle">الإدارة</h3><a href="#" onclick="openAdmin(event)" id="adminLink">لوحة إدارة المتجر</a><a href="#contact" id="footContact">اتصل بنا</a></div>
  </div>
- <div class="copyright">© 2026 CHERIA DZ. All rights reserved.</div>
+ <div class="copyright">© 2026 LUXORA. All rights reserved.</div>
 </footer>
 
 <div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()">
@@ -435,7 +435,7 @@ let favorites=JSON.parse(localStorage.getItem("luxora_favorites")||"[]");
 let lang="ar",currency="DZD",discountRate=0;
 
 const t=(key)=>translations[lang][key]||key;
-let save=()=>{
+const save=()=>{
  localStorage.setItem("luxora_products",JSON.stringify(products));
  localStorage.setItem("luxora_cart",JSON.stringify(cart));
  localStorage.setItem("luxora_favorites",JSON.stringify(favorites));
@@ -711,4 +711,3 @@ loadServerProducts();
 
 </body>
 </html>
-
