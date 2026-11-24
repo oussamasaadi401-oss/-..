@@ -1,0 +1,600 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUXORA ULTRA PRO</title>
+<style>
+:root{
+ --purple:#7928ca;--pink:#ff3d9a;--blue:#3987ff;
+ --orange:#ff8a24;--cyan:#00c9c8;--yellow:#ffd447;
+ --dark:#19152b;--muted:#77758b;--white:#fff;
+ --gradient:linear-gradient(120deg,#7928ca,#ff3d9a,#ff8a24);
+ --shadow:0 15px 45px #5b37a01c;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+ font-family:Arial,sans-serif;background:#faf9ff;color:var(--dark);
+ overflow-x:hidden;
+}
+button,input,select{font:inherit}
+button{cursor:pointer;border:0}
+a{text-decoration:none;color:inherit}
+.topbar{
+ background:linear-gradient(90deg,#6224bd,#e735a2,#ff8a24);
+ color:white;text-align:center;padding:10px;font-size:13px;
+}
+header{
+ position:sticky;top:0;z-index:50;background:#ffffffed;
+ backdrop-filter:blur(18px);border-bottom:1px solid #eee;
+}
+.nav{
+ max-width:1250px;margin:auto;padding:16px 22px;
+ display:flex;align-items:center;justify-content:space-between;gap:15px;
+}
+.logo{font-size:29px;font-weight:1000;letter-spacing:2px;
+ background:var(--gradient);background-clip:text;color:transparent}
+.navlinks{display:flex;gap:25px;align-items:center}
+.navlinks a{font-size:14px;font-weight:bold;transition:.25s}
+.navlinks a:hover{color:var(--pink)}
+.actions{display:flex;gap:9px;align-items:center}
+.iconbtn{
+ background:#f4efff;border-radius:13px;padding:11px;
+ font-size:17px;transition:.25s;position:relative;
+}
+.iconbtn:hover{background:#fce2f2;transform:translateY(-3px)}
+.count{
+ position:absolute;top:-7px;right:-6px;background:var(--pink);
+ color:white;border-radius:50%;font-size:10px;padding:3px 6px;
+}
+select{
+ border:1px solid #eee;background:white;border-radius:10px;
+ padding:9px;color:#333;max-width:100px;
+}
+.menu{display:none}
+.hero{
+ max-width:1250px;margin:30px auto;padding:30px 22px;
+ display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center;
+}
+.hero-content{
+ background:linear-gradient(135deg,#6425bc,#a52dd5 50%,#fa398f);
+ color:white;border-radius:32px;padding:55px 42px;
+ position:relative;overflow:hidden;box-shadow:0 25px 60px #8b36c34a;
+}
+.hero-content:before,.hero-content:after{
+ content:"";position:absolute;border-radius:50%;background:#ffffff18;
+ width:250px;height:250px;right:-80px;top:-100px;
+}
+.hero-content:after{width:180px;height:180px;right:auto;left:-60px;top:auto;bottom:-100px}
+.tag{
+ display:inline-block;background:#ffffff25;padding:9px 15px;
+ border-radius:30px;font-size:12px;margin-bottom:20px;
+}
+.hero h1{font-size:clamp(35px,5vw,58px);line-height:1.2;margin-bottom:20px}
+.hero p{line-height:1.9;color:#f5eaff;margin-bottom:25px;max-width:450px}
+.btn{
+ display:inline-block;background:var(--gradient);color:white;
+ padding:14px 24px;border-radius:13px;font-weight:bold;
+ box-shadow:0 8px 22px #9c37b64a;transition:.3s;
+}
+.btn:hover{transform:translateY(-4px);filter:brightness(1.08)}
+.btn.white{background:white;color:#7928ca}
+.hero-art{
+ min-height:420px;border-radius:32px;
+ background:linear-gradient(140deg,#ffe3f1,#e4e4ff,#d7faff);
+ display:flex;align-items:center;justify-content:center;
+ position:relative;overflow:hidden;
+}
+.hero-art img{width:100%;height:420px;object-fit:cover;mix-blend-mode:multiply}
+.float{
+ position:absolute;background:white;padding:14px 18px;border-radius:15px;
+ box-shadow:var(--shadow);font-weight:bold;animation:float 3s infinite ease-in-out;
+}
+.float.one{top:35px;left:25px}
+.float.two{bottom:35px;right:25px;animation-delay:1s}
+@keyframes float{50%{transform:translateY(-12px)}}
+.section{max-width:1250px;margin:65px auto;padding:0 22px}
+.section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px;gap:15px}
+.section-head h2{font-size:29px}
+.section-head p{color:var(--muted);font-size:13px;margin-top:8px}
+.categories{
+ display:grid;grid-template-columns:repeat(4,1fr);gap:17px;
+}
+.category{
+ border-radius:22px;padding:25px;text-align:center;
+ background:linear-gradient(140deg,#f0e2ff,#ffe5f1);
+ transition:.3s;cursor:pointer;
+}
+.category:nth-child(2){background:linear-gradient(140deg,#dcf5ff,#e5e4ff)}
+.category:nth-child(3){background:linear-gradient(140deg,#fff0d8,#ffe2e8)}
+.category:nth-child(4){background:linear-gradient(140deg,#dcfff4,#e3e8ff)}
+.category:hover{transform:translateY(-7px);box-shadow:var(--shadow)}
+.category .emoji{font-size:39px;margin-bottom:12px}
+.category h3{font-size:16px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+.toolbar input{
+ flex:1;min-width:180px;border:1px solid #e8e2f2;
+ padding:12px 15px;border-radius:12px;outline:none;background:white;
+}
+.toolbar input:focus{border-color:var(--purple)}
+.toolbar select{max-width:170px}
+.products{
+ display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
+}
+.product{
+ background:white;border-radius:20px;overflow:hidden;
+ box-shadow:0 7px 25px #4b33710d;transition:.3s;position:relative;
+}
+.product:hover{transform:translateY(-7px);box-shadow:var(--shadow)}
+.product-img{
+ height:220px;background:linear-gradient(135deg,#f3eaff,#ffe8f3);
+ position:relative;overflow:hidden;
+}
+.product-img img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.product:hover .product-img img{transform:scale(1.07)}
+.heart{
+ position:absolute;top:12px;left:12px;background:white;
+ border-radius:50%;width:36px;height:36px;font-size:18px;
+}
+.product-info{padding:17px}
+.product-info small{color:var(--purple);font-weight:bold}
+.product-info h3{font-size:16px;margin:9px 0}
+.product-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.price{font-weight:900;color:#7928ca;font-size:17px}
+.add{
+ background:var(--gradient);color:white;padding:10px 13px;
+ border-radius:10px;font-size:12px;font-weight:bold;
+}
+.promo{
+ margin:75px auto;max-width:1200px;padding:55px 30px;
+ border-radius:30px;color:white;text-align:center;
+ background:linear-gradient(110deg,#ff8a24,#ff3d9a,#7928ca);
+}
+.promo h2{font-size:35px;margin-bottom:12px}
+.promo p{margin-bottom:22px}
+.newsletter{
+ background:linear-gradient(135deg,#e8ddff,#ffe2f1);
+ border-radius:25px;padding:40px;text-align:center;
+}
+.newsletter h2{margin-bottom:10px}
+.newsletter p{color:#777;margin-bottom:20px}
+.newsletter input{padding:14px;border:0;border-radius:10px;width:min(330px,100%);margin:5px}
+footer{
+ background:#201a35;color:white;padding:55px 22px 20px;margin-top:70px;
+}
+.footer-inner{max-width:1200px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
+footer p{color:#c7c0d7;line-height:1.9;margin-top:12px;font-size:13px}
+footer h3{margin-bottom:15px}
+footer a{display:block;color:#c7c0d7;margin:12px 0;font-size:13px}
+footer a:hover{color:#ff70bd}
+.copyright{text-align:center;border-top:1px solid #ffffff20;margin-top:35px;padding-top:20px;color:#aaa;font-size:12px}
+.overlay{
+ position:fixed;inset:0;background:#17112688;z-index:100;
+ display:none;align-items:center;justify-content:center;padding:15px;
+}
+.overlay.show{display:flex}
+.modal{
+ background:white;width:min(520px,100%);max-height:85vh;overflow:auto;
+ border-radius:22px;padding:25px;animation:pop .25s;
+}
+@keyframes pop{from{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}
+.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.close{background:#f3eff9;border-radius:10px;padding:8px 12px}
+.cart-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 0;border-bottom:1px solid #eee}
+.cart-row img{width:55px;height:55px;object-fit:cover;border-radius:10px}
+.cart-row button{background:#ffe4ed;color:#e22;padding:7px;border-radius:8px}
+.total{display:flex;justify-content:space-between;font-weight:bold;margin:20px 0;font-size:19px}
+.empty{text-align:center;padding:30px;color:#888}
+.form-field{margin:12px 0}
+.form-field label{display:block;font-size:13px;margin-bottom:7px}
+.form-field input{width:100%;padding:12px;border:1px solid #ddd;border-radius:10px}
+.toast{
+ position:fixed;bottom:25px;left:50%;transform:translateX(-50%) translateY(100px);
+ background:#201a35;color:white;padding:13px 22px;border-radius:12px;
+ z-index:200;transition:.3s;opacity:0;
+}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+.admin-box{background:#faf7ff;border-radius:15px;padding:15px;margin-bottom:15px}
+@media(max-width:850px){
+ .navlinks{display:none}
+ .menu{display:block}
+ .hero{grid-template-columns:1fr}
+ .hero-content{padding:40px 25px}
+ .hero-art{min-height:300px}
+ .hero-art img{height:300px}
+ .products{grid-template-columns:repeat(2,1fr)}
+ .categories{grid-template-columns:repeat(2,1fr)}
+ .footer-inner{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){
+ .nav{padding:12px}
+ .logo{font-size:23px}
+ .actions{gap:5px}
+ .iconbtn{padding:9px}
+ .hero{padding:15px}
+ .hero-content{padding:32px 22px}
+ .hero h1{font-size:36px}
+ .section{padding:0 14px;margin:45px auto}
+ .section-head h2{font-size:23px}
+ .products{gap:11px}
+ .product-img{height:155px}
+ .product-info{padding:12px}
+ .product-info h3{font-size:14px}
+ .price{font-size:14px}
+ .add{padding:9px;font-size:11px}
+ .promo{margin:45px 14px;padding:35px 20px}
+ .promo h2{font-size:27px}
+ .footer-inner{grid-template-columns:1fr}
+ .newsletter{padding:25px 15px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar" id="announcement">✨ مرحباً بك في LUXORA — اكتشف عالم التسوق الفاخر</div>
+
+<header>
+ <nav class="nav">
+  <a class="logo" href="#">LUXORA.</a>
+  <div class="navlinks">
+   <a href="#home" data-t="home">الرئيسية</a>
+   <a href="#categories" data-t="categories">التصنيفات</a>
+   <a href="#products" data-t="products">المنتجات</a>
+   <a href="#contact" data-t="contact">اتصل بنا</a>
+  </div>
+  <div class="actions">
+   <select id="language" aria-label="Language">
+    <option value="ar">العربية</option><option value="fr">Français</option><option value="en">English</option>
+   </select>
+   <select id="currency" aria-label="Currency">
+    <option value="DZD">DZD</option><option value="EUR">EUR</option><option value="USD">USD</option>
+   </select>
+   <button class="iconbtn" onclick="openFavorites()" title="Favorites">♡<span class="count" id="favCount">0</span></button>
+   <button class="iconbtn" onclick="openCart()" title="Cart">🛒<span class="count" id="cartCount">0</span></button>
+   <button class="iconbtn menu" onclick="document.querySelector('.navlinks').classList.toggle('mobile-open')">☰</button>
+  </div>
+ </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+ <div class="hero-content">
+  <span class="tag" id="heroTag">✦ مجموعة جديدة 2026</span>
+  <h1 id="heroTitle">اكتشف أسلوبك<br>بلمسة من الفخامة</h1>
+  <p id="heroText">اكتشف منتجات مختارة بعناية، تجمع بين الجودة والأناقة والتصميم العصري.</p>
+  <a href="#products" class="btn white" id="shopBtn">تسوق الآن ←</a>
+ </div>
+ <div class="hero-art">
+  <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=900" alt="Fashion collection">
+  <div class="float one">✨ أناقة بلا حدود</div>
+  <div class="float two">⭐ جودة مميزة</div>
+ </div>
+</section>
+
+<section class="section" id="categories">
+ <div class="section-head"><div><h2 id="catTitle">تسوق حسب التصنيف</h2><p id="catSub">اكتشف مجموعاتنا المتنوعة</p></div></div>
+ <div class="categories">
+  <div class="category" onclick="filterCategory('fashion')"><div class="emoji">👗</div><h3 id="catFashion">الأزياء</h3></div>
+  <div class="category" onclick="filterCategory('tech')"><div class="emoji">🎧</div><h3 id="catTech">الإلكترونيات</h3></div>
+  <div class="category" onclick="filterCategory('accessories')"><div class="emoji">👜</div><h3 id="catAccessories">الإكسسوارات</h3></div>
+  <div class="category" onclick="filterCategory('home')"><div class="emoji">🏡</div><h3 id="catHome">المنزل</h3></div>
+ </div>
+</section>
+
+<section class="section" id="products">
+ <div class="section-head"><div><h2 id="productTitle">منتجاتنا المميزة</h2><p id="productSub">اختيارات رائعة تنتظرك</p></div></div>
+ <div class="toolbar">
+  <input id="search" placeholder="🔍 ابحث عن منتج..." oninput="renderProducts()">
+  <select id="filter" onchange="renderProducts()">
+   <option value="all">كل التصنيفات</option>
+   <option value="fashion">الأزياء</option><option value="tech">الإلكترونيات</option>
+   <option value="accessories">الإكسسوارات</option><option value="home">المنزل</option>
+  </select>
+  <select id="sort" onchange="renderProducts()">
+   <option value="default">الترتيب الافتراضي</option>
+   <option value="low">السعر: الأقل أولاً</option>
+   <option value="high">السعر: الأعلى أولاً</option>
+  </select>
+ </div>
+ <div class="products" id="productGrid"></div>
+</section>
+
+<section class="promo">
+ <h2 id="promoTitle">عالم جديد من الأناقة ينتظرك!</h2>
+ <p id="promoText">استخدم رمز LUXORA10 للحصول على خصم تجريبي 10%</p>
+ <a href="#products" class="btn white" id="promoBtn">اكتشف العروض</a>
+</section>
+
+<section class="section" id="contact">
+ <div class="newsletter">
+  <h2 id="newsTitle">ابقَ على اطلاع دائم ✨</h2>
+  <p id="newsText">اشترك ليصلك كل جديد من LUXORA</p>
+  <form onsubmit="subscribe(event)">
+   <input type="email" id="email" placeholder="البريد الإلكتروني" required>
+   <button class="btn" id="subscribeBtn">اشتراك</button>
+  </form>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="footer-inner">
+  <div><div class="logo" style="color:white">LUXORA.</div><p id="footerDesc">وجهتك المثالية لاكتشاف المنتجات العصرية والأنيقة.</p></div>
+  <div><h3 id="quickTitle">روابط سريعة</h3><a href="#home" id="footHome">الرئيسية</a><a href="#products" id="footProducts">المنتجات</a><a href="#categories" id="footCategories">التصنيفات</a></div>
+  <div><h3 id="adminTitle">الإدارة</h3><a href="#" onclick="openAdmin(event)" id="adminLink">لوحة إدارة المتجر</a><a href="#contact" id="footContact">اتصل بنا</a></div>
+ </div>
+ <div class="copyright">© 2026 LUXORA. All rights reserved.</div>
+</footer>
+
+<div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()">
+ <div class="modal">
+  <div class="modal-head"><h2 id="modalTitle">التفاصيل</h2><button class="close" onclick="closeModal()">✕</button></div>
+  <div id="modalBody"></div>
+ </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const translations={
+ ar:{
+  home:"الرئيسية",categories:"التصنيفات",products:"المنتجات",contact:"اتصل بنا",
+  announcement:"✨ مرحباً بك في LUXORA — اكتشف عالم التسوق الفاخر",
+  heroTag:"✦ مجموعة جديدة 2026",heroTitle:"اكتشف أسلوبك<br>بلمسة من الفخامة",
+  heroText:"اكتشف منتجات مختارة بعناية، تجمع بين الجودة والأناقة والتصميم العصري.",
+  shopBtn:"تسوق الآن ←",catTitle:"تسوق حسب التصنيف",catSub:"اكتشف مجموعاتنا المتنوعة",
+  catFashion:"الأزياء",catTech:"الإلكترونيات",catAccessories:"الإكسسوارات",catHome:"المنزل",
+  productTitle:"منتجاتنا المميزة",productSub:"اختيارات رائعة تنتظرك",
+  search:"🔍 ابحث عن منتج...",all:"كل التصنيفات",default:"الترتيب الافتراضي",
+  low:"السعر: الأقل أولاً",high:"السعر: الأعلى أولاً",add:"أضف للسلة",
+  promoTitle:"عالم جديد من الأناقة ينتظرك!",promoText:"استخدم رمز LUXORA10 للحصول على خصم تجريبي 10%",
+  promoBtn:"اكتشف العروض",newsTitle:"ابقَ على اطلاع دائم ✨",
+  newsText:"اشترك ليصلك كل جديد من LUXORA",email:"البريد الإلكتروني",subscribeBtn:"اشتراك",
+  footerDesc:"وجهتك المثالية لاكتشاف المنتجات العصرية والأنيقة.",
+  quickTitle:"روابط سريعة",adminTitle:"الإدارة",adminLink:"لوحة إدارة المتجر",
+  footHome:"الرئيسية",footProducts:"المنتجات",footCategories:"التصنيفات",footContact:"اتصل بنا",
+  cart:"سلة المشتريات",favorites:"المفضلة",empty:"لا توجد منتجات هنا بعد",
+  total:"المجموع",checkout:"إتمام الطلب",remove:"حذف",added:"تمت إضافة المنتج إلى السلة",
+  favoriteAdded:"تم تحديث المفضلة",name:"الاسم الكامل",phone:"رقم الهاتف",
+  address:"العنوان",confirm:"تأكيد الطلب",orderSuccess:"تم تسجيل طلبك تجريبياً بنجاح!",
+  admin:"لوحة الإدارة",newProduct:"إضافة منتج جديد",productName:"اسم المنتج",
+  productPrice:"السعر بالدينار",productImage:"رابط صورة المنتج",category:"التصنيف",
+  save:"إضافة المنتج",delete:"حذف",saved:"تم حفظ المنتج",coupon:"رمز الخصم",
+  couponPlaceholder:"أدخل LUXORA10",apply:"تطبيق",discount:"الخصم",
+  details:"تفاصيل المنتج",subscribed:"شكراً لاشتراكك!",noProducts:"لا توجد نتائج مطابقة"
+ },
+ fr:{
+  home:"Accueil",categories:"Catégories",products:"Produits",contact:"Contact",
+  announcement:"✨ Bienvenue chez LUXORA — Découvrez le shopping premium",
+  heroTag:"✦ Nouvelle collection 2026",heroTitle:"Découvrez votre style<br>avec élégance",
+  heroText:"Des produits soigneusement sélectionnés alliant qualité, élégance et modernité.",
+  shopBtn:"Acheter maintenant ←",catTitle:"Acheter par catégorie",catSub:"Découvrez nos collections",
+  catFashion:"Mode",catTech:"Électronique",catAccessories:"Accessoires",catHome:"Maison",
+  productTitle:"Nos produits vedettes",productSub:"De belles découvertes vous attendent",
+  search:"🔍 Rechercher...",all:"Toutes catégories",default:"Tri par défaut",
+  low:"Prix croissant",high:"Prix décroissant",add:"Ajouter au panier",
+  promoTitle:"Un nouveau monde d'élégance vous attend !",promoText:"Utilisez LUXORA10 pour une remise test de 10%",
+  promoBtn:"Découvrir",newsTitle:"Restez informé ✨",newsText:"Recevez les nouveautés LUXORA",
+  email:"Adresse e-mail",subscribeBtn:"S'abonner",footerDesc:"Votre destination pour des produits modernes et élégants.",
+  quickTitle:"Liens rapides",adminTitle:"Administration",adminLink:"Panneau de gestion",
+  footHome:"Accueil",footProducts:"Produits",footCategories:"Catégories",footContact:"Contact",
+  cart:"Mon panier",favorites:"Favoris",empty:"Aucun produit ici",
+  total:"Total",checkout:"Commander",remove:"Supprimer",added:"Produit ajouté au panier",
+  favoriteAdded:"Favoris mis à jour",name:"Nom complet",phone:"Téléphone",
+  address:"Adresse",confirm:"Confirmer la commande",orderSuccess:"Commande test enregistrée !",
+  admin:"Administration",newProduct:"Ajouter un produit",productName:"Nom du produit",
+  productPrice:"Prix en dinars",productImage:"URL de l'image",category:"Catégorie",
+  save:"Ajouter",delete:"Supprimer",saved:"Produit enregistré",coupon:"Code promo",
+  couponPlaceholder:"Entrez LUXORA10",apply:"Appliquer",discount:"Remise",
+  details:"Détails du produit",subscribed:"Merci pour votre inscription !",noProducts:"Aucun résultat"
+ },
+ en:{
+  home:"Home",categories:"Categories",products:"Products",contact:"Contact",
+  announcement:"✨ Welcome to LUXORA — Discover premium shopping",
+  heroTag:"✦ New collection 2026",heroTitle:"Discover your style<br>with luxury",
+  heroText:"Carefully selected products combining quality, elegance and modern design.",
+  shopBtn:"Shop now ←",catTitle:"Shop by category",catSub:"Explore our collections",
+  catFashion:"Fashion",catTech:"Electronics",catAccessories:"Accessories",catHome:"Home",
+  productTitle:"Featured products",productSub:"Amazing choices are waiting",
+  search:"🔍 Search products...",all:"All categories",default:"Default sorting",
+  low:"Price: low to high",high:"Price: high to low",add:"Add to cart",
+  promoTitle:"A new world of elegance awaits!",promoText:"Use LUXORA10 for a demo 10% discount",
+  promoBtn:"Explore deals",newsTitle:"Stay updated ✨",newsText:"Subscribe to LUXORA updates",
+  email:"Email address",subscribeBtn:"Subscribe",footerDesc:"Your destination for modern and elegant products.",
+  quickTitle:"Quick links",adminTitle:"Admin",adminLink:"Store dashboard",
+  footHome:"Home",footProducts:"Products",footCategories:"Categories",footContact:"Contact",
+  cart:"Shopping cart",favorites:"Favorites",empty:"Nothing here yet",
+  total:"Total",checkout:"Checkout",remove:"Remove",added:"Product added to cart",
+  favoriteAdded:"Favorites updated",name:"Full name",phone:"Phone",
+  address:"Address",confirm:"Confirm order",orderSuccess:"Demo order saved successfully!",
+  admin:"Admin dashboard",newProduct:"Add new product",productName:"Product name",
+  productPrice:"Price in DZD",productImage:"Image URL",category:"Category",
+  save:"Add product",delete:"Delete",saved:"Product saved",coupon:"Coupon",
+  couponPlaceholder:"Enter LUXORA10",apply:"Apply",discount:"Discount",
+  details:"Product details",subscribed:"Thanks for subscribing!",noProducts:"No matching results"
+ }
+};
+
+const initialProducts=[
+ {id:1,name:"حقيبة أنيقة",en:"Elegant handbag",fr:"Sac élégant",price:8500,category:"accessories",image:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600"},
+ {id:2,name:"ساعة عصرية",en:"Modern watch",fr:"Montre moderne",price:12500,category:"accessories",image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600"},
+ {id:3,name:"سماعات لاسلكية",en:"Wireless headphones",fr:"Écouteurs sans fil",price:6500,category:"tech",image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600"},
+ {id:4,name:"حذاء رياضي",en:"Sport sneakers",fr:"Chaussures sport",price:9800,category:"fashion",image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600"},
+ {id:5,name:"نظارات شمسية",en:"Sunglasses",fr:"Lunettes de soleil",price:4200,category:"accessories",image:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600"},
+ {id:6,name:"مصباح ديكوري",en:"Decorative lamp",fr:"Lampe décorative",price:5700,category:"home",image:"https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600"},
+ {id:7,name:"كاميرا صغيرة",en:"Compact camera",fr:"Appareil photo compact",price:24500,category:"tech",image:"https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600"},
+ {id:8,name:"سترة أنيقة",en:"Stylish jacket",fr:"Veste élégante",price:11000,category:"fashion",image:"https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600"}
+];
+
+let products=JSON.parse(localStorage.getItem("luxora_products")||"null")||initialProducts;
+let cart=JSON.parse(localStorage.getItem("luxora_cart")||"[]");
+let favorites=JSON.parse(localStorage.getItem("luxora_favorites")||"[]");
+let lang="ar",currency="DZD",discountRate=0;
+
+const t=(key)=>translations[lang][key]||key;
+const save=()=>{
+ localStorage.setItem("luxora_products",JSON.stringify(products));
+ localStorage.setItem("luxora_cart",JSON.stringify(cart));
+ localStorage.setItem("luxora_favorites",JSON.stringify(favorites));
+};
+function money(price){
+ let rate={DZD:1,EUR:0.0068,USD:0.0074}[currency];
+ let symbol={DZD:"دج",EUR:"€",USD:"$"}[currency];
+ return (price*rate).toLocaleString(lang==="en"?"en-US":"fr-FR",{maximumFractionDigits:2})+" "+symbol;
+}
+function productName(p){return lang==="ar"?p.name:lang==="fr"?(p.fr||p.en||p.name):(p.en||p.name)}
+function renderProducts(){
+ let q=document.getElementById("search").value.toLowerCase();
+ let cat=document.getElementById("filter").value;
+ let list=products.filter(p=>(cat==="all"||p.category===cat)&&
+  [p.name,p.en,p.fr].some(x=>(x||"").toLowerCase().includes(q)));
+ let sort=document.getElementById("sort").value;
+ if(sort==="low")list.sort((a,b)=>a.price-b.price);
+ if(sort==="high")list.sort((a,b)=>b.price-a.price);
+ document.getElementById("productGrid").innerHTML=list.length?list.map(p=>`
+ <article class="product">
+  <div class="product-img">
+   <img src="${safe(p.image)}" alt="${safe(productName(p))}" loading="lazy" onerror="this.src='https://placehold.co/600x400?text=LUXORA'">
+   <button class="heart" onclick="toggleFavorite(${p.id})">${favorites.includes(p.id)?"❤️":"♡"}</button>
+  </div>
+  <div class="product-info">
+   <small>${categoryName(p.category)}</small>
+   <h3>${safe(productName(p))}</h3>
+   <div class="product-bottom"><span class="price">${money(p.price)}</span>
+    <button class="add" onclick="addToCart(${p.id})">${t("add")}</button></div>
+   <button onclick="showDetails(${p.id})" style="margin-top:12px;background:none;color:#7928ca;font-size:12px">${t("details")} ←</button>
+  </div>
+ </article>`).join(""):`<p class="empty">${t("noProducts")}</p>`;
+ updateCounts();
+}
+function safe(value){
+ return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function categoryName(c){
+ return t(({fashion:"catFashion",tech:"catTech",accessories:"catAccessories",home:"catHome"})[c]||c);
+}
+function filterCategory(cat){document.getElementById("filter").value=cat;renderProducts();document.getElementById("products").scrollIntoView()}
+function updateCounts(){
+ document.getElementById("cartCount").textContent=cart.reduce((s,x)=>s+x.qty,0);
+ document.getElementById("favCount").textContent=favorites.length;
+}
+function toast(msg){
+ let el=document.getElementById("toast");el.textContent=msg;el.classList.add("show");
+ setTimeout(()=>el.classList.remove("show"),2400);
+}
+function addToCart(id){
+ let item=cart.find(x=>x.id===id);
+ if(item)item.qty++;else cart.push({id,qty:1});
+ save();updateCounts();toast(t("added"));
+}
+function toggleFavorite(id){
+ favorites=favorites.includes(id)?favorites.filter(x=>x!==id):[...favorites,id];
+ save();renderProducts();toast(t("favoriteAdded"));
+}
+function showModal(title,html){
+ document.getElementById("modalTitle").textContent=title;
+ document.getElementById("modalBody").innerHTML=html;
+ document.getElementById("overlay").classList.add("show");
+}
+function closeModal(){document.getElementById("overlay").classList.remove("show")}
+function openCart(){
+ let rows=cart.map(item=>{
+  let p=products.find(x=>x.id===item.id);if(!p)return "";
+  return `<div class="cart-row"><img src="${safe(p.image)}" alt="">
+  <div style="flex:1"><b>${safe(productName(p))}</b><p>${money(p.price)} × ${item.qty}</p></div>
+  <button onclick="removeCart(${p.id})">${t("remove")}</button></div>`;
+ }).join("");
+ let subtotal=cart.reduce((s,x)=>{let p=products.find(y=>y.id===x.id);return s+(p?p.price*x.qty:0)},0);
+ let total=subtotal*(1-discountRate);
+ showModal(t("cart"),rows?rows+`
+ <div class="form-field"><label>${t("coupon")}</label>
+ <div style="display:flex;gap:7px"><input id="coupon" placeholder="${t("couponPlaceholder")}"><button class="btn" onclick="applyCoupon()">${t("apply")}</button></div></div>
+ <div class="total"><span>${t("total")}</span><span>${money(total)}</span></div>
+ <button class="btn" style="width:100%" onclick="checkout()">${t("checkout")}</button>`
+ :`<div class="empty">🛒<p>${t("empty")}</p></div>`);
+}
+function removeCart(id){cart=cart.filter(x=>x.id!==id);save();openCart();updateCounts()}
+function applyCoupon(){
+ let value=document.getElementById("coupon").value.trim().toUpperCase();
+ if(value==="LUXORA10"){discountRate=.10;toast("10%");openCart()}
+ else toast("Invalid coupon");
+}
+function openFavorites(){
+ let rows=favorites.map(id=>products.find(p=>p.id===id)).filter(Boolean);
+ showModal(t("favorites"),rows.length?rows.map(p=>`
+ <div class="cart-row"><img src="${safe(p.image)}"><b>${safe(productName(p))}</b>
+ <button onclick="toggleFavorite(${p.id});openFavorites()">${t("remove")}</button></div>`).join(""):`<p class="empty">${t("empty")}</p>`);
+}
+function showDetails(id){
+ let p=products.find(x=>x.id===id);if(!p)return;
+ showModal(t("details"),`<img src="${safe(p.image)}" style="width:100%;height:220px;object-fit:cover;border-radius:15px">
+ <h2 style="margin:15px 0">${safe(productName(p))}</h2>
+ <p style="color:#7928ca;font-size:22px;font-weight:bold">${money(p.price)}</p>
+ <button class="btn" style="margin-top:18px;width:100%" onclick="addToCart(${id})">${t("add")}</button>`);
+}
+function checkout(){
+ if(!cart.length)return;
+ showModal(t("checkout"),`<form onsubmit="placeOrder(event)">
+ ${["name","phone","address"].map(k=>`<div class="form-field"><label>${t(k)}</label><input required name="${k}"></div>`).join("")}
+ <button class="btn" style="width:100%;margin-top:10px">${t("confirm")}</button></form>`);
+}
+function placeOrder(e){
+ e.preventDefault();
+ let orders=JSON.parse(localStorage.getItem("luxora_orders")||"[]");
+ orders.push({items:cart,customer:Object.fromEntries(new FormData(e.target)),date:new Date().toISOString()});
+ localStorage.setItem("luxora_orders",JSON.stringify(orders));
+ cart=[];discountRate=0;save();updateCounts();
+ showModal(t("checkout"),`<div class="empty">✅<h3>${t("orderSuccess")}</h3></div>`);
+}
+function openAdmin(e){
+ if(e)e.preventDefault();
+ showModal(t("admin"),`<div class="admin-box"><h3>${t("newProduct")}</h3>
+ <form onsubmit="addProduct(event)">
+ <div class="form-field"><label>${t("productName")}</label><input name="name" required></div>
+ <div class="form-field"><label>English name</label><input name="en"></div>
+ <div class="form-field"><label>Nom français</label><input name="fr"></div>
+ <div class="form-field"><label>${t("productPrice")}</label><input name="price" type="number" min="1" required></div>
+ <div class="form-field"><label>${t("productImage")}</label><input name="image" type="url" required></div>
+ <div class="form-field"><label>${t("category")}</label><select name="category">
+ <option value="fashion">Fashion</option><option value="tech">Tech</option>
+ <option value="accessories">Accessories</option><option value="home">Home</option></select></div>
+ <button class="btn">${t("save")}</button></form></div>
+ <h3>Products</h3>${products.map(p=>`<div class="cart-row"><span>${safe(productName(p))}</span><button onclick="deleteProduct(${p.id})">${t("delete")}</button></div>`).join("")}`);
+}
+function addProduct(e){
+ e.preventDefault();let f=new FormData(e.target);
+ products.push({id:Date.now(),name:f.get("name"),en:f.get("en"),fr:f.get("fr"),
+ price:Number(f.get("price")),image:f.get("image"),category:f.get("category")});
+ save();renderProducts();openAdmin();toast(t("saved"));
+}
+function deleteProduct(id){
+ products=products.filter(p=>p.id!==id);cart=cart.filter(x=>x.id!==id);
+ favorites=favorites.filter(x=>x!==id);save();renderProducts();openAdmin();
+}
+function subscribe(e){e.preventDefault();toast(t("subscribed"));e.target.reset()}
+
+function setLanguage(value){
+ lang=value;document.documentElement.lang=lang;
+ document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+ document.querySelectorAll("[data-t]").forEach(el=>el.textContent=t(el.dataset.t));
+ const ids=["announcement","heroTag","heroTitle","heroText","shopBtn","catTitle","catSub","catFashion","catTech","catAccessories","catHome","productTitle","productSub","promoTitle","promoText","promoBtn","newsTitle","newsText","subscribeBtn","footerDesc","quickTitle","adminTitle","adminLink","footHome","footProducts","footCategories","footContact"];
+ ids.forEach(id=>{let el=document.getElementById(id);if(el)el.innerHTML=t(id)});
+ document.getElementById("search").placeholder=t("search");
+ document.getElementById("email").placeholder=t("email");
+ document.getElementById("filter").options[0].text=t("all");
+ document.getElementById("sort").options[0].text=t("default");
+ document.getElementById("sort").options[1].text=t("low");
+ document.getElementById("sort").options[2].text=t("high");
+ document.getElementById("filter").options[1].text=t("catFashion");
+ document.getElementById("filter").options[2].text=t("catTech");
+ document.getElementById("filter").options[3].text=t("catAccessories");
+ document.getElementById("filter").options[4].text=t("catHome");
+ renderProducts();
+}
+document.getElementById("language").addEventListener("change",e=>setLanguage(e.target.value));
+document.getElementById("currency").addEventListener("change",e=>{currency=e.target.value;renderProducts()});
+renderProducts();
+</script>
+</body>
+</html>
